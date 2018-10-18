@@ -27,6 +27,7 @@
 1) Consultar Reclamações Abertas
 
 2) Validar Reclamação
+    2.1) Editar Reclamação - Botão aparece na lista de reclamações
 
 ## Tela Empresa - CRUD
 
