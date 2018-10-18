@@ -6,3 +6,11 @@
     font-family: 'Montserrat', Arial, Helvetica;
     /* font-size: 1.6rem; */
 }
+
+.container{
+    margin-top: 40px;
+}
+
+.table{
+    margin-top: 60px;
+}
