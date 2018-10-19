@@ -67,7 +67,7 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Reclamante</th>
                             <th scope="col">Reclamado</th>
                             <th scope="col">Data</th>
@@ -75,27 +75,16 @@
                           </tr>
                         </thead>
                         <tbody>
+                            <% for (processo of processos){%>
                           <tr>
-                            <th scope="row">1</th>
-                            <td>Maria Costa</td>
-                            <td>Banco do Brasil</td>
-                            <td>11/10/2018</td>
-                            <td>EM ANDAMENTO</td>
+                            <th scope="row"><%= processo.idProcessos %></th>
+                            <td><%= processo.ClienteIdClientes %></td>
+                            <td> Banco do Brasil </td>
+                            <td><%= processo.dataHora %></td>
+                            <td><%= processo.status %></td>
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob Souza</td>
-                            <td>Banco Itaú</td>
-                            <td>16/10/2018</td>
-                            <td>EM ANDAMENTO</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Ana Souza</td>
-                            <td>Tim</td>
-                            <td>16/10/2018</td>
-                            <td>CONCLUÍDO</td>
-                          </tr>
+                          <% } %>
+
                         </tbody>
                       </table>
                     </div>

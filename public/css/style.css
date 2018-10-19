@@ -15,6 +15,11 @@
     margin-top: 60px;
 }
 
+.titulo_grande{
+    margin-top: 1000px !important;
+    margin-bottom: 550px !important;
+}
+
 .titulo_pequeno{
     font-weight: 800;
 }
