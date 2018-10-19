@@ -6,7 +6,7 @@
         <meta property="og:locale" content="pt_BR">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         
@@ -26,13 +26,12 @@
                 </li> -->
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sou Consumidor
+                    Olá Procon Campo Mourão!
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Ver perfil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Sair</a>
                   </div>
                 </li>
             </div>
@@ -40,10 +39,35 @@
         <div class="container">
           <div class="row justify-content-md-center">
               <div class="col-sm-10 col-md-10 col-lg-8">
-                <spam class="titulo_grande"><h1> Processo 1123 </h1></spam>
+                <div class="titulo_grande"><h1> Processo <%= processo.idProcessos %> </h1></div>
 
-                <div><spam class="titulo_pequeno">ID Processo: </spam><p>  1123 </p></div>
-                <div><spam class="titulo_pequeno">Reclamante: </spam><p>  colocar dados do cliente </p></div>
+                <div class="campo_status">
+                  <form action="/processo" method="put">
+                      <div class="form-group">
+                        <div class="input-group mb-3">
+                          <select class="form-control" id="processo_status">
+                            <option>Esperando confirmação</option>
+                            <option>Aguardando documentação</option>
+                            <option>Em andamento</option>
+                            <option>Fechado</option>
+                          </select>
+                          <div class="input-group-append">
+                              <button type="submit" class="btn btn-outline-secondary">Salvar</button>
+                          </div>
+                      </div>
+                      </div>
+                  </form>
+              </div>
+
+                <div><spam class="titulo_pequeno">Reclamante: </spam><p>  <%= processo.ClienteIdClientes %> </p></div>
+                <div><spam class="titulo_pequeno">Reclamadas: </spam><p>  Banco do Brasil </p></div>
+                <div><spam class="titulo_pequeno">História ocorrência: </spam><p>  <%= processo.historiaOcorrencia %> </p></div>
+                <div><spam class="titulo_pequeno">Documentos apresentados: </spam><p>  <%= processo.docApresentados %> </p></div>
+                <div><spam class="titulo_pequeno">Forma atendimento: </spam><p>  <%= processo.formaAtendimento %> </p></div>
+                <div><spam class="titulo_pequeno">Tipo atendimento: </spam><p>  <%= processo.tipoAtendimento %> </p></div>
+                <div><spam class="titulo_pequeno">Data início: </spam><p>  <%= processo.dataHora %> </p></div>
+                <div><spam class="titulo_pequeno">Status: </spam><p>  <%= processo.status %> </p></div>
+                <div><spam class="titulo_pequeno">Processo: </spam><p>  <%= processo.processo %> </p></div>
               </div>
           </div>
 
