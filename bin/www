@@ -10,6 +10,112 @@ var http = require('http');
 const models = require('../models');
 const sequelize = models.sequelize;
 
+// função povoar base para teste
+
+function povoarBase() {
+  models.Enderecos.create({
+    rua: 'brzezinski',
+    bairro: 'centro',
+    numero: 123,
+    quadraLote: 1238,
+    complemento: 'casa',
+    Cidade: 'cm',
+    Estado: 'PR',
+  }).then(_endereco => {
+    models.Clientes.create({
+      Nome: 'Augusto',
+      CPF: '55779988',
+      RG: '123456',
+      Telefone: '456789',
+      Email: 'augusto@gmail.com'
+    }).then(_cliente => {
+      models.Arquivamento.create({
+        arquivamento: 'fui roubado pela empresa!',
+      }).then(_arquivamento => {
+        models.Enquadramento.create({
+          area: 'Area que se enquadra',
+          assunto: 'assunto geral.',
+          problema: 'roubo, preço muito alto',
+        }).then(_enquadramento => {
+          models.Processos.create({
+            historiaOcorrencia: 'testando...',
+            status: 'em andamento',
+            docApresentados: 'cpf, rg',
+            dataHora: '2018-12-10',
+            formaAtendimento: 'presencial',
+            tipoAtendimento: 'local',
+            processo: 'sim',
+            EnquadramentoIdEnquadramento: _enquadramento.idEnquadramento,
+            ArquivamentoIdEnquadramento: _enquadramento.idEnquadramento,
+            ClienteIdClientes: _cliente.idClientes,
+          }).then(_processos => {
+            models.Enderecos.create({
+              rua: 'Irmaos Pereira',
+              bairro: 'centro',
+              numero: 155,
+              quadraLote: 1228,
+              complemento: 'predio',
+              Cidade: 'cm',
+              Estado: 'PR',
+            }).then(_enderecoEmpresa => {
+              models.Empresas.create({
+                nomeFantasia: 'Mercado1',
+                CNAE: 'NãoSei',
+                cnpj: '554487',
+                telefoneCelular: '456789',
+                telefoneFixo: '554487',
+                razaoSocial: 'tbmNaoSei',
+                tipoEmpresa: "MEI",
+                email: 'mercado@gmail.com',
+                fax: '45678911',
+                faturamento: 1000,
+                EnderecoIdEnderecos: _enderecoEmpresa.idEnderecos,
+              }).then(_empresa => {
+                models.Reclamadas.create({
+                  idEmpresas: _empresa.idEmpresas,
+                  idProcessos: _processos.idProcessos,
+                }).then(_processos2 => {
+                  models.Processos.create({
+                    historiaOcorrencia: 'testando123...',
+                    status: 'em andamento',
+                    docApresentados: 'cpf',
+                    dataHora: '2018-12-11',
+                    formaAtendimento: 'presencial',
+                    tipoAtendimento: 'local',
+                    processo: 'sim',
+                    EnquadramentoIdEnquadramento: _enquadramento.idEnquadramento,
+                    ArquivamentoIdEnquadramento: _enquadramento.idEnquadramento,
+                    ClienteIdClientes: _cliente.idClientes,
+                  }).then(_processo3 => {
+                    models.Processos.create({
+                      historiaOcorrencia: 'testando123...',
+                      status: 'em andamento',
+                      docApresentados: 'cpf',
+                      dataHora: '2018-12-11',
+                      formaAtendimento: 'presencial',
+                      tipoAtendimento: 'local',
+                      processo: 'sim',
+                      EnquadramentoIdEnquadramento: _enquadramento.idEnquadramento,
+                      ArquivamentoIdEnquadramento: _enquadramento.idEnquadramento,
+                      ClienteIdClientes: _cliente.idClientes,
+                    })
+                  })
+                  
+                })
+
+              })
+            })
+          })
+        })
+      })
+    })
+  }).catch(ex => {
+    console.log('terminou a primeira parte de povoamento de teste')
+  })
+
+}
+
+
 /**
  * Get port from environment and store in Express.
  */
@@ -31,6 +137,7 @@ sequelize.sync({ force: false })
   .then(() => {
     console.log('Banco criado com sucesso');
     server.listen(port);
+    povoarBase();
     server.on('error', onError);
     server.on('listening', onListening);
     console.log('Server ouvindo a porta', port);
