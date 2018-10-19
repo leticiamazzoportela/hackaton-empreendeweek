@@ -27,7 +27,8 @@ function povoarBase() {
       CPF: '55779988',
       RG: '123456',
       Telefone: '456789',
-      Email: 'augusto@gmail.com'
+      Email: 'augusto@gmail.com',
+      EnderecoIdEnderecos: _endereco.idEnderecos,
     }).then(_cliente => {
       models.Arquivamento.create({
         arquivamento: 'fui roubado pela empresa!',
@@ -69,6 +70,7 @@ function povoarBase() {
                 email: 'mercado@gmail.com',
                 fax: '45678911',
                 faturamento: 1000,
+                classificacao: 60,
                 EnderecoIdEnderecos: _enderecoEmpresa.idEnderecos,
               }).then(_empresa => {
                 models.Reclamadas.create({
@@ -133,7 +135,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-sequelize.sync({ force: false })
+sequelize.sync({ force: true })
   .then(() => {
     console.log('Banco criado com sucesso');
     server.listen(port);
