@@ -63,7 +63,7 @@
 
                     </select>
                 </div>
-
+                <span class="glyphicon glyphicon-triangle-right"></span>
                     <table class="table table-hover">
                         <thead>
                           <tr>
@@ -72,6 +72,7 @@
                             <th scope="col">Reclamado</th>
                             <th scope="col">Data</th>
                             <th scope="col">Status</th>
+                            <th scope="col"> # </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -82,6 +83,9 @@
                                 <td> Banco do Brasil </td>
                                 <td><%= processo.dataHora %></td>
                                 <td><%= processo.status %></td>
+                                <td><a href=<%= "http://localhost:3000/processo/" + processo.idProcessos %>>
+                                  <i class="fas fa-caret-right"></i>
+                                  </a></td>
                               </tr>
                             <% } %>
 
