@@ -22,7 +22,7 @@ router.post('/', async function(req, res, next){
     // Teria uma senha criptografada
     if(cliente && cliente.password == password){
       // Deve gerar o token e retornar
-      res.render('index', { /* Token: token */ });
+      res.render('procon_lista_processo', { /* Token: token */ });
     }
     else {
       next(createError(400, {
@@ -34,6 +34,11 @@ router.post('/', async function(req, res, next){
     message: "dados invalidos!\nVerifique os dados inseridos!",
   }));
 });
+
+router.get('/cadastro', function(req, res, next) {
+  res.render('index');
+});
+
 
 router.get('/processo/:id', function(req, res, next) {
 

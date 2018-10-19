@@ -23,9 +23,14 @@
                         </label>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" style="margin-top: 30px">Entrar!</button>
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" style="margin-top: 30px">Nao possui cadastro?</button>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" style="margin-top: 30px" onclick="cadastro()" >Nao possui cadastro?</button>
                 </form><!-- /form -->
             </div><!-- /card-container -->
         </div><!-- /container -->
+        <script>
+            function cadastro(){
+                location.href = 'cadastro';
+            }
+        </script>
     </body>
 </html>
