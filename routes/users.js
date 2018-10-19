@@ -31,7 +31,6 @@ router.get('/', function (req, res, next) {
 
 /* POST clientes. */
 router.post('/', (req, res, next) => {
-  console.log(req.body.name);
 
   let cliente = {};
   let enderecoCliente = {};
@@ -48,9 +47,7 @@ router.post('/', (req, res, next) => {
   enderecoCliente.Cidade = req.body.cidade;
   enderecoCliente.Estado = req.body.estado;
 
-  let endCriado;
-
-  Enderecos.find(cliente.cpf, {
+  Enderecos.find(cliente.CPF, {
 
   }).then(_cliente => {
     if (_cliente) {
@@ -79,8 +76,50 @@ router.post('/', (req, res, next) => {
           }
         })
     }
+  }).catch(ex => {
+    console.log(ex);
+    res.status(500).send({ sucesso: false, msg: 'Erro interno.' })
   })
 
+
+
 })
+
+
+router.put('/', (req, res, next) => {
+
+  let clienteAlterado = {};
+  let enderecoClienteAlterado = {};
+
+  clienteAlterado.Nome = req.body.nome;
+  clienteAlterado.CPF = req.body.cpf;
+  clienteAlterado.RG = req.body.rg;
+  clienteAlterado.Telefone = req.body.telefone;
+  clienteAlterado.Email = req.body.email;
+  enderecoClienteAlterado.rua = req.body.rua;
+  enderecoClienteAlterado.bairro = req.body.bairro;
+  enderecoClienteAlterado.numero = req.body.numeroCasa;
+  enderecoClienteAlterado.quadraLote = req.body.quadraLote;
+  enderecoClienteAlterado.complemento = req.body.complemento;
+  enderecoClienteAlterado.Cidade = req.body.cidade;
+  enderecoClienteAlterado.Estado = req.body.estado;
+
+  // Clientes.findOne({
+  //   where: {
+  //     CPF: clienteAlterado.CPF,
+  //   }
+  // }).then(_cliente => {
+
+  // })
+
+  res.status(501).json({sucesso: false, msg: 'Não implementado.'})
+  
+
+});
+
+
+router.delete('/', (req, res, next) => {
+  res.status(501).json({sucesso: false, msg: 'Não implementado.'})
+});
 
 module.exports = router;
