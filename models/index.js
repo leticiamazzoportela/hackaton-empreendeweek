@@ -33,14 +33,6 @@ const Clientes = sequelize.define('Clientes', {
 		type: Sequelize.STRING(20),
 		allowNull: false,
 	},
-	Cidade: {
-		type: Sequelize.STRING(50),
-		allowNull: false,
-	},
-	Estado: {
-		type: Sequelize.STRING(2),
-		allowNull: false,
-	},
 	Telefone: {
 		type: Sequelize.STRING(9),
 		allowNull: false,
@@ -72,10 +64,6 @@ const Empresas = sequelize.define('Empresas', {
 	telefoneFixo: {
 		type: Sequelize.STRING(20),
 		allowNull: true,
-	},
-	endereco: {
-		type: Sequelize.STRING(90),
-		allowNull: false,
 	},
 	razaoSocial: {
 		type: Sequelize.STRING(45),
@@ -109,10 +97,6 @@ const Processos = sequelize.define('Processos', {
 		primaryKey: true,
 		autoIncrement: true,
 	},
-	reclamante: {
-		type: Sequelize.STRING(128),
-		allowNull: false,
-	},
 	historiaOcorrencia: {
 		type: Sequelize.TEXT,
 		allowNull: false,
@@ -143,74 +127,107 @@ const Processos = sequelize.define('Processos', {
 	},
 });
 
+const Enderecos = sequelize.define('Enderecos', {
+	idEnderecos: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
+	},
+	rua: {
+		type: Sequelize.TEXT,
+		allowNull: false,
+	},
+	bairro: {
+		type: Sequelize.TEXT,
+		allowNull: false,
+	},
+	numero: {
+		type: Sequelize.INTEGER,
+		allowNull: true,
+	},
+	quadraLote: {
+		type: Sequelize.INTEGER(10),
+		allowNull: true,
+	},
+	complemento: {
+		type: Sequelize.TEXT,
+		allowNull: true,
+	},
+	Cidade: {
+		type: Sequelize.STRING(50),
+		allowNull: false,
+	},
+	Estado: {
+		type: Sequelize.STRING(2),
+		allowNull: false,
+	},
+});
+
+const Arquivamento = sequelize.define('Arquivamento', {
+	idArquivamento : {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
+	},
+	arquivamento: {
+		type: Sequelize.TEXT,
+		allowNull: true,
+	},
+});
+
+const Enquadramento = sequelize.define('Enquadramento', {
+	idEnquadramento: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
+	},
+	area: {
+		type: Sequelize.TEXT,
+		allowNull: false,
+	},
+	assunto: {
+		type: Sequelize.TEXT,
+		allowNull: false,
+	},
+	problema: {
+		type: Sequelize.TEXT,
+		allowNull: false,
+	},
+});
+
+const Reclamadas = sequelize.define('Reclamadas', {
+	idReclamadas: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
+	},
+});
+
 //AS RELAÇÕES DENTRE AS TABELAS SEGUEM ABAIXO
 
+Enderecos.hasOne(Clientes);
 
+Enderecos.hasOne(Empresas);
 
+Enquadramento.hasOne(Processos);
 
-// ControleCreditos.belongsTo(Empresas, {
-// 	foreignKey: {
-// 		allowNull: false,
-// 		name: 'idEmpresas',
-// 	}
-// });
+Arquivamento.hasOne(Processos);
 
+Clientes.hasOne(Processos);
 
-// Empresas.hasMany(Usuarios, {
-// 	foreignKey: {
-// 		allowNull: true,
-// 		name: 'idEmpresa',
-// 	}
-// });
+Processos.hasMany(Reclamadas, {
+	foreignKey: {
+		allowNull: false,
+		name: 'idProcessos',
+	},
+});
 
-// Empresas.hasMany(Clientes, {
-// 	foreignKey: {
-// 		allowNull: false,
-// 		name: 'idEmpresa',
-// 	}
-// });
-
-// Empresas.hasMany(Perguntas, {
-// 	foreignKey: {
-// 		allowNull: false,
-// 		name: 'idEmpresa',
-// 	}
-// });
-
-// Pesquisas.hasMany(Perguntas, {
-// 	foreignKey: {
-// 		allowNull: true,
-// 		name: 'idPesquisa',
-// 	}
-// });
-
-// Perguntas.hasMany(Envios, {
-// 	foreignKey: {
-// 		name: 'idPerguntas',
-// 		allowNull: false,
-// 	}
-// });
-
-// Respostas.belongsTo(Perguntas, {
-// 	foreignKey: {
-// 		allowNull: false,
-// 		name: 'idPerguntas',
-// 	}
-// });
-
-// Respostas.belongsTo(Acoes, {
-// 	foreignKey: {
-// 		name: 'idAcao',
-// 		allowNull: true,
-// 	},
-// });
-
-// Envios.hasMany(Recibos, {
-// 	foreignKey: {
-// 		name: 'idPareado',
-// 		allowNull: false,
-// 	}
-// });
+Empresas.hasMany(Reclamadas, {
+	foreignKey: {
+		allowNull: false,
+		name: 'idEmpresas',
+	},
+});
 
 //FIM DAS RELAÇÕES DAS TABELAS **********
 
