@@ -91,6 +91,10 @@ const Empresas = sequelize.define('Empresas', {
 		type: Sequelize.INTEGER,
 		allowNull: true,
 	},
+	classifaicacao: {
+		type: Sequelize.INTEGER,
+		allowNull: true,
+	}
 });
 
 const Processos = sequelize.define('Processos', {
