@@ -28,6 +28,7 @@ const Clientes = sequelize.define('Clientes', {
 	CPF: {
 		type: Sequelize.STRING(18),
 		allowNull: false,
+		unique: true,
 	},
 	RG: {
 		type: Sequelize.STRING(20),
@@ -60,6 +61,7 @@ const Empresas = sequelize.define('Empresas', {
 	cnpj: {
 		type: Sequelize.STRING(18),
 		allowNull: false,
+		unique: true,
 	},
 	telefoneFixo: {
 		type: Sequelize.STRING(20),
@@ -238,4 +240,8 @@ module.exports = {
 	Clientes,
 	Empresas,
 	Processos,
+	Enderecos,
+	Reclamadas,
+	Enquadramento,
+	Arquivamento,
 };
