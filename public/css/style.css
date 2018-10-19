@@ -18,3 +18,17 @@
 .titulo_pequeno{
     font-weight: 800;
 }
+
+.search-container{
+    margin-top: 30px;
+    display:none;
+}
+
+.dropdown{
+    margin-top : 5px;
+}
+
+.form-control{
+    margin-top : 20px;
+
+}
