@@ -43,14 +43,14 @@
             
             <div class="row justify-content-md-center">
               <div class="col-sm-10 col-md-10 col-lg-10">
-                <h1> Processos </h1>
+                <h1> Empresas </h1>
                 <button type = "button" class="btn btn-outline-info" onclick="showButton()">Filtros</button>
                 <div class="search-container" id='searchBar'>
                     <input type="text" placeholder="Digite o texto do filtro" name="search">
                     <button type="submit" style="margin-left:-6px;"><i class="fa fa-search"></i></button>
                     <select class="form-control col-sm-2">
                       <option value="ID">#</option>
-                      <option value="Reclamante">Reclamante</option>
+                      <option value="Reclamante">Empresa</option>
                       <option value="Reclamado">Reclamado</option>
                       <option value="Data">Data</option>
                       <option value="Status">Status</option>
@@ -66,23 +66,18 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Reclamante</th>
-                            <th scope="col">Reclamado</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Status</th>
-                            <th scope="col"> # </th>
+                            <th scope="col">CNPJ</th>
+                            <th scope="col">Razão Social</th>
+                            <th scope="col">Ranking</th>
                           </tr>
                         </thead>
                         <tbody>
-                            <% for (processo of processos){%>
+                            <% for (empresa of empresas){%>
                               <tr>
-                                <th scope="row"><%= processo.idProcessos %></th>
-                                <td><%= processo.ClienteIdClientes %></td>
-                                <td> Banco do Brasil </td>
-                                <td><%= processo.dataHora %></td>
-                                <td><%= processo.status %></td>
-                                <td><a href=<%= "http://localhost:3000/processo/" + processo.idProcessos %>>
+                                <th scope="row"><%= empresa.idEmpresas %></th>
+                                <td><%= empresa.razaoSocial %></td>
+                                <td><%= empresa.classificacao %></td>
+                                <td>
                                   <i class="fas fa-caret-right"></i>
                                   </a></td>
                               </tr>
