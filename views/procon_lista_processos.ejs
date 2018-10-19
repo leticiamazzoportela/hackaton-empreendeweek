@@ -76,14 +76,14 @@
                         </thead>
                         <tbody>
                             <% for (processo of processos){%>
-                          <tr>
-                            <th scope="row"><%= processo.idProcessos %></th>
-                            <td><%= processo.ClienteIdClientes %></td>
-                            <td> Banco do Brasil </td>
-                            <td><%= processo.dataHora %></td>
-                            <td><%= processo.status %></td>
-                          </tr>
-                          <% } %>
+                              <tr>
+                                <th scope="row"><%= processo.idProcessos %></th>
+                                <td><%= processo.ClienteIdClientes %></td>
+                                <td> Banco do Brasil </td>
+                                <td><%= processo.dataHora %></td>
+                                <td><%= processo.status %></td>
+                              </tr>
+                            <% } %>
 
                         </tbody>
                       </table>
