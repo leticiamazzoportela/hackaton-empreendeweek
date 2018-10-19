@@ -15,6 +15,11 @@
     margin-top: 60px;
 }
 
+.titulo_grande{
+    margin-top: 1000px !important;
+    margin-bottom: 550px !important;
+}
+
 .titulo_pequeno{
     font-weight: 800;
 }
@@ -33,7 +38,16 @@
 }
 
 .margin-sm-top{
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.margin-md-bottom{
+    margin-bottom: 50px;
+}
+
+.line-style{
+    height: 12px; border: 0; 
+    box-shadow: inset 0 12px 12px -12px rgba(7, 2, 36, 0.5);
 }
 
 .button-cadastrar{
@@ -44,7 +58,7 @@
 }
 
 .header-color{
-    background-image: linear-gradient(rgba(0, 134, 112, 0.692), rgba(5, 63, 78, 0.747));
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
 }
 
 .title-color{
