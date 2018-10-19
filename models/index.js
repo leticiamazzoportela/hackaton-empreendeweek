@@ -42,6 +42,10 @@ const Clientes = sequelize.define('Clientes', {
 		type: Sequelize.STRING(64),
 		allowNull: false,
 	},
+	Senha: {
+		type: Sequelize.TEXT,
+		allowNull: false,
+	}
 })
 
 const Empresas = sequelize.define('Empresas', {
