@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:locale" content="pt_BR">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+        <title>Sistema Procon</title>
+    </head>
+    <body>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#">Procon - Campo Mourão</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav mr-auto">
+                            <!-- <li class="nav-item active">
+                              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li> -->
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Olá Procon Campo Mourão!
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="#">Ver perfil</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" href="#">Sair</a>
+                              </div>
+                            </li>
+                        </div>
+                      </nav>
+              
+          <div class="container">
+            
+            <div class="row justify-content-md-center">
+              <div class="col-sm-10 col-md-10 col-lg-10">
+                <h1> Empresas </h1>
+                <button type = "button" class="btn btn-outline-info" onclick="showButton()">Filtros</button>
+                <div class="search-container" id='searchBar'>
+                    <input type="text" placeholder="Digite o texto do filtro" name="search">
+                    <button type="submit" style="margin-left:-6px;"><i class="fa fa-search"></i></button>
+                    <select class="form-control col-sm-2">
+                      <option value="ID">#</option>
+                      <option value="Reclamante">Empresa</option>
+                      <option value="Reclamado">Reclamado</option>
+                      <option value="Data">Data</option>
+                      <option value="Status">Status</option>
+                      <option value="enquad1">Area</option>
+                      <option value="enquad2">Assunto</option>
+                      <option value="enquad3">Problema</option>
+                      <option value="atend_forma">Forma de atendimento</option>
+                      <option value="atend_tipo">Tipo atendimento</option>
+
+                    </select>
+                </div>
+                <span class="glyphicon glyphicon-triangle-right"></span>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">CNPJ</th>
+                            <th scope="col">Razão Social</th>
+                            <th scope="col">Ranking</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% for (empresa of empresas){%>
+                              <tr>
+                                <th scope="row"><%= empresa.idEmpresas %></th>
+                                <td><%= empresa.razaoSocial %></td>
+                                <td><%= empresa.classificacao %></td>
+                                <td>
+                                  <i class="fas fa-caret-right"></i>
+                                  </a></td>
+                              </tr>
+                            <% } %>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+          </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script>
+          function showButton(){
+            var x = document.getElementById('searchBar')
+            if(x.style.display == ''){
+              x.style.display = 'block';
+            }
+            else{
+              x.style.display = ''
+            }
+          }
+        </script>
+    </body>
+</html>
+

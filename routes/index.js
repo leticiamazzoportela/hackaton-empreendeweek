@@ -36,14 +36,14 @@ router.post('/', async function(req, res, next){
 });
 
 router.get('/lista_empresa', function(req, res, next) {
-  res.render('procon_lista_empresas');
+  //res.render('procon_lista_empresas');
   
   Empresas.findAll({
     attributes: ['idEmpresas', 'cnpj', 'razaoSocial', 'classificacao'],
   }).then(_empresas =>{
     if (_empresas){
-      //res.status(200).json(_processos);
-      res.render('procon_lista_empresas', {sucesso: true, empresas: _empresas});
+      res.status(200).json(_empresas);
+      //res.render('procon_lista_empresas', {sucesso: true, empresas: _empresas});
       //res.status(200).json({sucesso: true, processos: _processos})
     }
     else{
